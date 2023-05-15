@@ -1,0 +1,84 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - millenia_movie_filter
+  - old_millenia_movie_filter
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Netflix_Movies_Loader
+  status: executed
+  type: data_loader
+  upstream_blocks: []
+  uuid: netflix_movies_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - movies_to_db
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Millenia_Movie_Filter
+  status: executed
+  type: transformer
+  upstream_blocks:
+  - netflix_movies_loader
+  uuid: millenia_movie_filter
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - movie_to_db_2
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Old_Millenia_Movie_Filter
+  status: updated
+  type: transformer
+  upstream_blocks:
+  - netflix_movies_loader
+  uuid: old_millenia_movie_filter
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: movies_to_db
+  status: updated
+  type: data_exporter
+  upstream_blocks:
+  - millenia_movie_filter
+  uuid: movies_to_db
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: movie_to_db_2
+  status: updated
+  type: data_exporter
+  upstream_blocks:
+  - old_millenia_movie_filter
+  uuid: movie_to_db_2
+callbacks: []
+data_integration: null
+description: null
+executor_count: 1
+extensions: {}
+name: old cherry
+type: python
+updated_at: '2023-05-15 19:23:32'
+uuid: old_cherry
+widgets: []
